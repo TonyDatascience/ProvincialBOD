@@ -1,4 +1,4 @@
 matplotlib
 streamlit_jupyter
 tensorflow
-sklearn
+scikit-learn
