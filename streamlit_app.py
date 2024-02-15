@@ -43,6 +43,7 @@ import json
 import os.path
 import logging
 import math
+import core
 
 import streamlit as st
 from streamlit_jupyter import StreamlitPatcher, tqdm
@@ -91,4 +92,5 @@ else:
     else:
         Based_Pkl=pd.read_pickle("Data/dbased_all_csv.pkl")
 st.title("Hello")
-Based_Pkl
+st.title(testImport(H))
+#Based_Pkl
