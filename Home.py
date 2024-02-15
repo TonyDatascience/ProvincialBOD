@@ -1,8 +1,9 @@
 import streamlit as st
 
 
-st.markdown("# Main page123🎈")
-st.sidebar.markdown("# Main page123🎈")
+st.markdown("# Trat Provincial Health Data v.1🎈")
+st.sidebar.markdown("# หน้าหลัก🎈")
 
-st.title("Trat Provincial Health Data v.1")
 st.image('images/kk.jpeg', caption='Trat sea')
+
+st.header("ข้อมูลสูขภาพของจังหวัดตราด เพื่อการเตรียมความพร้อมในการคำนวณ :green[HALE] ในระดับจังหวัด")
