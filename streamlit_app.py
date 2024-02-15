@@ -92,5 +92,5 @@ else:
     else:
         Based_Pkl=pd.read_pickle("Data/dbased_all_csv.pkl")
 st.title("Hello")
-st.title(testImport("Hoola"))
+st.write(testImport("Hoola"))
 #Based_Pkl
