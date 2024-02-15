@@ -1,4 +1,3 @@
-import streamlit as st
 import numpy as np
 import pandas as pd
 import copy
@@ -48,5 +47,48 @@ import math
 import streamlit as st
 from streamlit_jupyter import StreamlitPatcher, tqdm
 StreamlitPatcher().jupyter() 
-
+model_file_120_70='Models/cnn_100_70_Feb_13.keras'
+scalerfile_120_70='Models/cnn_100_70_scaler_Feb_13.sav'
+model_file_100_70='Models/cnn_120_70_Feb_14.keras'
+scalerfile_100_70='Models/cnn_120_70_scaler_Feb_14.sav'
+std_scaler_120_70=joblib.load(scalerfile_120_70)
+model_cnn3_120_70=tf.keras.models.load_model(model_file_120_70)
+std_scaler_100_70=joblib.load(scalerfile_100_70)
+model_cnn3_100_70=tf.keras.models.load_model(model_file_100_70)
+#Step 1: Read CSV
+CSV_Files=['Data/BTCUSD_M1_2024.csv']
+TestSystem=True
+if(TestSystem):
+    CollectivePD=pd.DataFrame()
+    for iFile in CSV_Files:
+        tmp_csv=pd.read_csv(iFile,sep='\t')
+        OldCol=tmp_csv.columns
+        tmp_csv.columns = ['Date','Time', 'Open', 'High','Low','Close','Volume','RealVolume','Spread']
+        NewCol=tmp_csv.columns
+        print("Based column names={}, \nNew Column names={}".format(OldCol,NewCol))
+        tmp_csv=tmp_csv.assign(TimeMin=pd.to_datetime(tmp_csv['Date'] + " " + tmp_csv['Time']))
+        first_column = tmp_csv.pop('TimeMin') 
+        tmp_csv.insert(0, 'TimeMin', first_column) 
+        tmp_csv=tmp_csv.drop(['Date','Time'], axis=1)
+        CollectivePD=pd.concat([CollectivePD,tmp_csv],axis=0)
+    Based_Pkl=CollectivePD
+else:
+    if(False):
+        CollectivePD=pd.DataFrame()
+        for iFile in CSV_Files:
+            tmp_csv=pd.read_csv(iFile,sep='\t')
+            OldCol=tmp_csv.columns
+            tmp_csv.columns = ['Date','Time', 'Open', 'High','Low','Close','Volume','RealVolume','Spread']
+            NewCol=tmp_csv.columns
+            print("Based column names={}, \nNew Column names={}".format(OldCol,NewCol))
+            tmp_csv=tmp_csv.assign(TimeMin=pd.to_datetime(tmp_csv['Date'] + " " + tmp_csv['Time']))
+            first_column = tmp_csv.pop('TimeMin') 
+            tmp_csv.insert(0, 'TimeMin', first_column) 
+            tmp_csv=tmp_csv.drop(['Date','Time'], axis=1)
+            CollectivePD=pd.concat([CollectivePD,tmp_csv],axis=0)
+        CollectivePD.to_pickle("Data/dbased_all_csv.pkl")
+        Based_Pkl=pd.read_pickle("Data/dbased_all_csv.pkl")
+    else:
+        Based_Pkl=pd.read_pickle("Data/dbased_all_csv.pkl")
 st.title("Hello")
+Based_Pkl
