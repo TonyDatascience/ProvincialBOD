@@ -49,7 +49,7 @@ import streamlit as st
 #StreamlitPatcher().jupyter() 
 
 # In[2]:
-
+pd.options.display.float_format = '{:,.3f}'.format
 st.title("Hello")
 st.write("""
 # Hello *world* 123
