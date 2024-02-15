@@ -100,8 +100,6 @@ useMT5=False
 if(useMT5): 
     import MetaTrader5 as mt5
 
-std_scaler=joblib.load(scalerfile)
-model_cnn3 = tf.keras.models.load_model(model_file)
 SpreadSec=10
 deviation = 3
 sl=5
