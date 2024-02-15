@@ -142,7 +142,7 @@ else:
         Based_Pkl=pd.read_pickle("Data/dbased_all_csv.pkl")
     else:
         Based_Pkl=pd.read_pickle("Data/dbased_all_csv.pkl")
-st.title("Hello world")
+
 
 pre_chunk_need=30;chunk_size=100;post_chunk_need=25;TotalChunkSize=pre_chunk_need+chunk_size+post_chunk_need;
 
@@ -150,5 +150,16 @@ pre_chunk_need=30;chunk_size=100;post_chunk_need=25;TotalChunkSize=pre_chunk_nee
 
 OriginalChunk=Based_Pkl[-200:]
 OriginalChunk
+
+##### GUI Section
+st.title("Trat Provincial Health Data")
+st.head("Section 1: Descriptive Data")
 st.write(OriginalChunk)
+st.head("Section 2: Life expectancy Calulation")
+st.write(OriginalChunk)
+st.head("Section 3: HALE calculation")
+st.write(OriginalChunk)
+
+
+
 
