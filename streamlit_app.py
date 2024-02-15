@@ -95,11 +95,7 @@ st.title("Hello")
 
 pre_chunk_need=30
 
-Chosen_Y_Feature=['softmax_tp100_sl70','softmax_tp120_sl70']
-OutputIndex=range(pre_chunk_need-1,Combine_Chunks.shape[0],pre_chunk_need)
-Selected_Rows=Combine_Chunks.iloc[OutputIndex]
-All_Y_Features=Chosen_Y_Feature
-Selected_Rows['softmax_tp120_sl70'].value_counts()
+
 if(True):
     Number_Of_Frames=OriginalChunk.shape[0]-(pre_chunk_need+post_chunk_need)+1
     StartFrame=0
@@ -139,4 +135,9 @@ if(True):
             #tp*Acc-(1-Acc)*sl
         #Result.loc[len(Result)] = [tname,t[0],t[1],t[2],(t[1]+t[2])/sum(t),(Cost+7)/(Profit+Cost+7),(Cost+10)/(Profit+Cost+10),(t[1]+t[2])/sum(t)*(1-(Cost)/(Profit+Cost))]
     print(Result)
+Chosen_Y_Feature=['softmax_tp100_sl70','softmax_tp120_sl70']
+OutputIndex=range(pre_chunk_need-1,Combine_Chunks.shape[0],pre_chunk_need)
+Selected_Rows=Combine_Chunks.iloc[OutputIndex]
+All_Y_Features=Chosen_Y_Feature
+Selected_Rows['softmax_tp120_sl70'].value_counts()
 #Based_Pkl
