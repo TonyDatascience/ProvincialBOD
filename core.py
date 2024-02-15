@@ -1265,4 +1265,4 @@ def PrepRowsGrid(PrepChunk,FutureSoftmax=False):
                     PrepChunk[ColumnText].values[pre_chunk_need-1]=int(retSoftMaxCondition(BuyTP,BuySL,SellTP,SellSL))
     return PrepChunk[0:pre_chunk_need]
 def testImport(H):
-    print("Form IMPORT",H)
+    return ("Form IMPORT"+H)
