@@ -92,5 +92,51 @@ else:
     else:
         Based_Pkl=pd.read_pickle("Data/dbased_all_csv.pkl")
 st.title("Hello")
-st.write(testImport("Hoola"))
+
+pre_chunk_need=30
+OriginalChunk.shape
+Chosen_Y_Feature=['softmax_tp100_sl70','softmax_tp120_sl70']
+OutputIndex=range(pre_chunk_need-1,Combine_Chunks.shape[0],pre_chunk_need)
+Selected_Rows=Combine_Chunks.iloc[OutputIndex]
+All_Y_Features=Chosen_Y_Feature
+Selected_Rows['softmax_tp120_sl70'].value_counts()
+if(True):
+    Number_Of_Frames=OriginalChunk.shape[0]-(pre_chunk_need+post_chunk_need)+1
+    StartFrame=0
+    StopFrame=Number_Of_Frames
+    eAllChunks=pd.DataFrame()
+    start_time=timeit.default_timer()
+    for i in range(StartFrame,StopFrame):
+        SmallChunk=OriginalChunk[i:(i+pre_chunk_need+post_chunk_need)]
+        #print(i,"=",SmallChunk.index)
+        TimeTotal=(pd.Timedelta(SmallChunk['TimeMin'].values[54]-SmallChunk['TimeMin'].values[0]).seconds)/60
+        if(TimeTotal==pre_chunk_need+post_chunk_need-1):    
+            #eAllChunks=pd.concat([eAllChunks,PrepRowsGrid(SmallChunk,FutureSoftmax=True)],ignore_index=True)
+            eAllChunks=pd.concat([eAllChunks,PrepRowsSelected(SmallChunk,FutureSoftmax=True)],ignore_index=True)
+        update_progress((i+1)/(StopFrame))
+    eAllChunks.to_pickle("Data/day_BTC_Chunk.pkl")
+    end_time=timeit.default_timer()
+    elapsed_time=end_time - start_time
+    print("working time for data preparation=",elapsed_time," sec for ",StopFrame-StartFrame," frames")
+    Combine_Chunks=pd.read_pickle("Data/day_BTC_Chunk.pkl")
+else:
+    Combine_Chunks=pd.read_pickle("Data/day_BTC_Chunk.pkl")
+if(True):
+    print("HELLO")
+    Profit=10
+    Result=pd.DataFrame({'Target':[],'Real0':[],'Real1':[],'Real2':[],'FireRate':[],'Accuracy_Need':[],'TW_Score':[]})
+    Targets=All_Y_Features
+    for ColName in Targets:
+            t=Selected_Rows[ColName].value_counts()
+            tp_loc=ColName.find('tp')
+            tp_end=ColName.find('_sl')
+            tp=int(ColName[(tp_loc+2):tp_end])
+            sl=int(ColName[(tp_end+3):])
+            #tp*Acc-sl+Acc*sl=0 tp*Acc+Acc*sl=sl Acc(tp+sl)=sl Acc=sl/(tp+sl)
+            FRate=(t[1]+t[2])/sum(t)
+            Acc=(Profit+sl)/(tp+sl)
+            Result.loc[len(Result)] =[ColName,t[0],t[1],t[2],FRate,Acc,FRate*0.8+1.2*Acc]
+            #tp*Acc-(1-Acc)*sl
+        #Result.loc[len(Result)] = [tname,t[0],t[1],t[2],(t[1]+t[2])/sum(t),(Cost+7)/(Profit+Cost+7),(Cost+10)/(Profit+Cost+10),(t[1]+t[2])/sum(t)*(1-(Cost)/(Profit+Cost))]
+    print(Result)
 #Based_Pkl
