@@ -31,4 +31,4 @@ def stream_data():
 
 
 #if st.button("Stream data"):
-st.write_stream(_LOREM_IPSUM)
+st.write_stream(stream_data())
