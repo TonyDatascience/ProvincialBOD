@@ -153,7 +153,7 @@ OriginalChunk=Based_Pkl[-200:]
 
 ##### GUI Section
 st.title("Trat Provincial Health Data")
-st.image('images/yose.png', caption='YOSEMITE Nat. For.')
+st.image('images/kk.jpeg', caption='YOSEMITE Nat. For.')
 st.header("Section 1: Descriptive Data")
 st.write(OriginalChunk)
 st.header("Section 2: Life expectancy Calulation")
