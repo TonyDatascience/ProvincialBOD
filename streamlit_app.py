@@ -43,7 +43,7 @@ import json
 import os.path
 import logging
 import math
-import core
+from core import *
 
 import streamlit as st
 from streamlit_jupyter import StreamlitPatcher, tqdm
