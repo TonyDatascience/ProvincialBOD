@@ -43,7 +43,71 @@ import json
 import os.path
 import logging
 import math
-from core import *
+
+
+model_file_120_70='Models/cnn_100_70_Feb_13.keras'
+scalerfile_120_70='Models/cnn_100_70_scaler_Feb_13.sav'
+model_file_100_70='Models/cnn_120_70_Feb_14.keras'
+scalerfile_100_70='Models/cnn_120_70_scaler_Feb_14.sav'
+std_scaler_120_70=joblib.load(scalerfile_120_70)
+model_cnn3_120_70=tf.keras.models.load_model(model_file_120_70)
+std_scaler_100_70=joblib.load(scalerfile_100_70)
+model_cnn3_100_70=tf.keras.models.load_model(model_file_100_70)
+
+
+
+pd.options.display.float_format = '{:,.2f}'.format
+#UN='7005867'
+#PW='PoP@icmarket24'
+#Demo
+#---------------------------------------------------------------------------------------------------------------------#
+#Standard account                                      Section  setting server and broker                                           --#
+#UN=51569834
+#PW='bn$&jcbW7R'
+#sv='ICMarketsSC-Demo'
+#os.environ['TF_ENABLE_ONEDNN_OPTS']='0'
+gap_timezone = pytz.timezone('Etc/GMT-5') #Run on PC
+gap_timezone = pytz.timezone('Etc/GMT+2') #Run on server
+
+#Raw account
+UN=51593605
+PW='6t$kPrO3kt'
+sv='ICMarketsSC-Demo'
+
+#---------------------------------------------------------------------------------------------------------------------#
+FirstInstall=False
+dbMarketFile="MarketTime.db"
+dbOrdersFile="Orders.db"
+json_file_name='forex_controls.json'
+TargetMarketName='EURUSD'
+TblOrders='orders_'+str(date.today())
+symbol='EURUSD'
+EMA_Constant=2
+pre_chunk_need=30;chunk_size=100;post_chunk_need=25;TotalChunkSize=pre_chunk_need+chunk_size+post_chunk_need;
+TradeSafety=20.0
+
+
+TargetMarketName='EURUSD'
+tp=0.00050
+lot=0.05
+coeff=1
+ExpiredOrder=1
+ExpiredPosition=25
+useMT5=False
+if(useMT5): 
+    import MetaTrader5 as mt5
+
+SpreadSec=10
+deviation = 3
+sl=5
+MaxMinutes=25
+AcceptLoss=-tp*coeff*lot
+ServerControl='Run'
+MaxRound=10000
+
+
+
+
 def update_progress(progress):
     barLength = 20  # Modify this value to change the length of the progress bar
     status = ""
