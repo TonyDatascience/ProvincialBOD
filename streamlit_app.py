@@ -96,6 +96,9 @@ st.title("Hello")
 pre_chunk_need=30
 
 
+print("Basic parameters= pre_chunk_need={},chunk_size={},post_chunk_need={},TotalChunkSize={}".format(pre_chunk_need,chunk_size,post_chunk_need,TotalChunkSize))
+OriginalChunk=Based_Pkl[-1000:]
+
 if(True):
     Number_Of_Frames=OriginalChunk.shape[0]-(pre_chunk_need+post_chunk_need)+1
     StartFrame=0
