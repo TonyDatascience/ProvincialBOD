@@ -2,3 +2,4 @@ matplotlib
 streamlit_jupyter
 tensorflow
 scikit-learn
+colorama
