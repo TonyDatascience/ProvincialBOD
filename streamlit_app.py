@@ -44,9 +44,9 @@ import os.path
 import logging
 import math
 
-import streamlit as st
-from streamlit_jupyter import StreamlitPatcher, tqdm
-StreamlitPatcher().jupyter() 
+#import streamlit as st
+#from streamlit_jupyter import StreamlitPatcher, tqdm
+#StreamlitPatcher().jupyter() 
 
 #---------Block 2
 model_file_120_70='Models/cnn_100_70_Feb_13.keras'
