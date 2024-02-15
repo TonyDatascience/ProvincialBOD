@@ -149,5 +149,5 @@ pre_chunk_need=30;chunk_size=100;post_chunk_need=25;TotalChunkSize=pre_chunk_nee
 
 print("Basic parameters= pre_chunk_need={},chunk_size={},post_chunk_need={},TotalChunkSize={}".format(pre_chunk_need,chunk_size,post_chunk_need,TotalChunkSize))
 OriginalChunk=Based_Pkl[-200:]
-print(OriginalChunk)
+st.print(OriginalChunk)
 
