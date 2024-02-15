@@ -2,7 +2,7 @@ import streamlit as st
 
 #from streamlit_jupyter import StreamlitPatcher, tqdm
 
-StreamlitPatcher().jupyter() 
+#StreamlitPatcher().jupyter() 
 import pandas as pd
 import numpy as np
 
