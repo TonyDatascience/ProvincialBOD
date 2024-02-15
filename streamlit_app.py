@@ -94,7 +94,7 @@ else:
 st.title("Hello")
 
 pre_chunk_need=30
-OriginalChunk.shape
+
 Chosen_Y_Feature=['softmax_tp100_sl70','softmax_tp120_sl70']
 OutputIndex=range(pre_chunk_need-1,Combine_Chunks.shape[0],pre_chunk_need)
 Selected_Rows=Combine_Chunks.iloc[OutputIndex]
