@@ -149,14 +149,14 @@ pre_chunk_need=30;chunk_size=100;post_chunk_need=25;TotalChunkSize=pre_chunk_nee
 
 
 OriginalChunk=Based_Pkl[-200:]
-OriginalChunk
+
 
 ##### GUI Section
 st.title("Trat Provincial Health Data")
 st.image('images/yose.png', caption='YOSEMITE Nat. For.')
 st.header("Section 1: Descriptive Data")
 st.write(OriginalChunk)
-st.head("Section 2: Life expectancy Calulation")
+st.header("Section 2: Life expectancy Calulation")
 st.write(OriginalChunk)
 st.header("Section 3: HALE calculation")
 st.write(OriginalChunk)
