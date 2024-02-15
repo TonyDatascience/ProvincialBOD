@@ -153,11 +153,12 @@ OriginalChunk
 
 ##### GUI Section
 st.title("Trat Provincial Health Data")
-st.head("Section 1: Descriptive Data")
+st.image('images/yose.png', caption='YOSEMITE Nat. For.')
+st.header("Section 1: Descriptive Data")
 st.write(OriginalChunk)
 st.head("Section 2: Life expectancy Calulation")
 st.write(OriginalChunk)
-st.head("Section 3: HALE calculation")
+st.header("Section 3: HALE calculation")
 st.write(OriginalChunk)
 
 
