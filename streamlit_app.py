@@ -142,12 +142,12 @@ else:
         Based_Pkl=pd.read_pickle("Data/dbased_all_csv.pkl")
     else:
         Based_Pkl=pd.read_pickle("Data/dbased_all_csv.pkl")
-st.title("Hello")
+st.title("Hello world")
 
 pre_chunk_need=30;chunk_size=100;post_chunk_need=25;TotalChunkSize=pre_chunk_need+chunk_size+post_chunk_need;
 
 
-print("Basic parameters= pre_chunk_need={},chunk_size={},post_chunk_need={},TotalChunkSize={}".format(pre_chunk_need,chunk_size,post_chunk_need,TotalChunkSize))
+
 OriginalChunk=Based_Pkl[-200:]
 st.print(OriginalChunk)
 
